@@ -255,6 +255,7 @@ def quant_apply_mlp(
                 bias=bias1,
             )
         elif use_gmm_swiglu_quant_fusion:
+            print(f"[Debugging][moe_mlp] w1:{w1.shape}, w1_scale:{w1_scale.shape}")
             hidden_states, swiglu_out_scale, _ = DeviceOperator.npu_grouped_matmul_swiglu_quant(
                 x=hidden_states,
                 weight=_require_single_tensor_for_swiglu_quant(w1, name="w1"),

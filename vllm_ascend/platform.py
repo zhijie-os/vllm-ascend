@@ -445,7 +445,7 @@ class NPUPlatform(Platform):
         # NOTE: We should not set this environment variable in RL (sleep mode) scenarios.
         # Find more details about how to configure this environment variable at https://www.hiascend.com/document/detail/zh/Pytorch/720/comref/Envvariables/Envir_012.html
         if model_config and not model_config.enable_sleep_mode:
-            npu_alloc_configs = os.getenv("PYTORCH_NPU_ALLOC_CONF", "expandable_segments:True")
+            npu_alloc_configs = os.getenv("PYTORCH_NPU_ALLOC_CONF", "expandable_segments:False")
             # This environment variable may have more than one key-value pairs.
             # We should append ",expandable_segments:True" to the current configs.
             # For example: "page_size:1g" + ",expandable_segments:True".
